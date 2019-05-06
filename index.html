@@ -2,19 +2,41 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" type="text/css" href="style.css">
         <title>Peer-to-Peer Chat System</title>
-        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-		<h1>Peer-to-Peer Chat System</h1>
-	
-		<div style="position: relative; top: 10px; margin-left: 40px; line-height: 20px;">
-			<a href="receive.html" target="_blank">receive.html</a>
-			
-			<br><br>
-			
-			<a href="send.html" target="_blank">send.html</a>
-		</div>
+        <h1>Peer-to-Peer Chat System</h1>
+
+        <table>
+            <tr>
+                <td class="title">Status:</td>
+                <td class="title">Messages:</td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="id-label">my ID:</label>
+                    <span id="my-id"></span>
+                    <button id="copy-btn">Copy</button>
+                    <br>
+                    <label class="id-label">peer ID:</label>
+                    <input type="text" id="peer-id-txt">
+                    <button id="connect-btn">Connect</button>
+                </td>
+                <td>
+                    <input type="text" id="send-msg-box" placeholder="Enter a message..." autofocus="true" />
+                    <button type="button" id="send-btn">Send</button>
+                    <button type="button" id="clear-msg-btn">Clear Msgs (Local)</button>
+                </td>
+            </tr>
+            <tr>
+                <td><div id="status" class="status"></div></td>
+                <td><div class="message" id="message"></div></td>
+            </tr>
+        </table>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.18/peer.min.js"></script>
+        <script type="text/javascript" src="connecter.js"></script>
     </body>
 </html>
