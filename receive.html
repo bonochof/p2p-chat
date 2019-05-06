@@ -3,10 +3,11 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width">
-        <title>Peer-to-Peer Cue System --- Reciever</title>
-        <link rel="stylesheet" href="style.css">
+        <title>Peer-to-Peer Chat System --- Reciever</title>
     </head>
     <body>
+        <h1>Peer-to-Peer Chat System --- Receiver</h1>
+
         <table class="display">
             <tr>
                 <td class="title">Status:</td>
@@ -25,14 +26,6 @@
             <tr>
                 <td><div id="status" class="status"></div></td>
                 <td><div class="message" id="message"></div></td>
-            </tr>
-            <tr>
-                <td class="display-box standby" id="standby"><h2>Standby</h2></td>
-                <td class="display-box hidden" id="go"><h2>Go</h2></td>
-            </tr>
-            <tr>
-                <td class="display-box hidden" id="fade"><h2>Fade</h2></td>
-                <td class="display-box hidden" id="off"><h2>All Off</h2></td>
             </tr>
         </table>
 
@@ -115,28 +108,7 @@
                 function ready() {
                     conn.on('data', function (data) {
                         console.log("Data recieved");
-                        var cueString = "<span class=\"cueMsg\">Cue: </span>";
-                        switch (data) {
-                            case 'Go':
-                                go();
-                                addMessage(cueString + data);
-                                break;
-                            case 'Fade':
-                                fade();
-                                addMessage(cueString + data);
-                                break;
-                            case 'Off':
-                                off();
-                                addMessage(cueString + data);
-                                break;
-                            case 'Reset':
-                                reset();
-                                addMessage(cueString + data);
-                                break;
-                            default:
-                                addMessage("<span class=\"peerMsg\">Peer: </span>" + data);
-                                break;
-                        };
+                        addMessage("<span class=\"peerMsg\">Peer: </span>" + data);
                     });
                     conn.on('close', function () {
                         status.innerHTML = "Connection reset<br>Awaiting connection...";
@@ -144,34 +116,6 @@
                         start(true);
                     });
                 }
-                function go() {
-                    standbyBox.className = "display-box hidden";
-                    goBox.className = "display-box go";
-                    fadeBox.className = "display-box hidden";
-                    offBox.className = "display-box hidden";
-                    return;
-                };
-                function fade() {
-                    standbyBox.className = "display-box hidden";
-                    goBox.className = "display-box hidden";
-                    fadeBox.className = "display-box fade";
-                    offBox.className = "display-box hidden";
-                    return;
-                };
-                function off() {
-                    standbyBox.className = "display-box hidden";
-                    goBox.className = "display-box hidden";
-                    fadeBox.className = "display-box hidden";
-                    offBox.className = "display-box off";
-                    return;
-                }
-                function reset() {
-                    standbyBox.className = "display-box standby";
-                    goBox.className = "display-box hidden";
-                    fadeBox.className = "display-box hidden";
-                    offBox.className = "display-box hidden";
-                    return;
-                };
                 function addMessage(msg) {
                     var now = new Date();
                     var h = now.getHours();

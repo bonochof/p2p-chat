@@ -3,11 +3,10 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width">
-        <title>Peer-to-Peer Cue System --- Sender</title>
-        <link rel="stylesheet" href="style.css">
+        <title>Peer-to-Peer Chat System --- Sender</title>
     </head>
     <body>
-        <h1>Peer-to-Peer Cue System --- Sender</h1>
+        <h1>Peer-to-Peer Chat System --- Sender</h1>
 
         <table class="control">
             <tr>
@@ -30,22 +29,6 @@
                 <td><div id="status" class="status"></div></td>
                 <td><div class="message" id="message"></div></td>
             </tr>
-            <tr>
-                <td>
-                    <button type="button" class="control-button" id="resetButton">Reset</button>
-                </td>
-                <td>
-                    <button type="button" class="control-button" id="goButton">Go</button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <button type="button" class="control-button" id="fadeButton">Fade</button>
-                </td>
-                <td>
-                    <button type="button" class="control-button" id="offButton">Off</button>
-                </td>
-            </tr>
         </table>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.18/peer.min.js"></script>
@@ -57,10 +40,6 @@
                 var recvIdInput = document.getElementById("receiver-id");
                 var status = document.getElementById("status");
                 var message = document.getElementById("message");
-                var goButton = document.getElementById("goButton");
-                var resetButton = document.getElementById("resetButton");
-                var fadeButton = document.getElementById("fadeButton");
-                var offButton = document.getElementById("offButton");
                 var sendMessageBox = document.getElementById("sendMessageBox");
                 var sendButton = document.getElementById("sendButton");
                 var clearMsgsButton = document.getElementById("clearMsgsButton");
@@ -163,18 +142,6 @@
                         addMessage(cueString + sigName);
                     }
                 }
-                goButton.onclick = function () {
-                    signal("Go");
-                };
-                resetButton.onclick = function () {
-                    signal("Reset");
-                };
-                fadeButton.onclick = function () {
-                    signal("Fade");
-                };
-                offButton.onclick = function () {
-                    signal("Off");
-                };
                 function addMessage(msg) {
                     var now = new Date();
                     var h = now.getHours();
