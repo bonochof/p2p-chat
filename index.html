@@ -4,18 +4,23 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <title>Peer-to-Peer Chat System</title>
     </head>
     <body>
         <h1>Peer-to-Peer Chat System</h1>
 
-        <table>
+        <div class="table-responsive">
+        <table class="table table-condensed">
+            <thead class="thead">
             <tr>
-                <td class="title">Status:</td>
-                <td class="title">Messages:</td>
+                <th class="title">Status:</td>
+                <th class="title">Messages:</td>
             </tr>
+            </thead>
+            <tbody>
             <tr>
-                <td>
+                <td class="col-xs-3">
                     <label class="id-label">my ID:</label>
                     <span id="my-id"></span>
                     <button id="copy-btn">Copy</button>
@@ -34,7 +39,8 @@
                 <td><div id="status" class="status"></div></td>
                 <td><div class="message" id="message"></div></td>
             </tr>
-        </table>
+            </tbody>
+        </table></div>
 
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.18/peer.min.js"></script>
         <script type="text/javascript" src="connecter.js"></script>
