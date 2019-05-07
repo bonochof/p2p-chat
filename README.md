@@ -1,4 +1,4 @@
-p2p-chat
+Peer to Peer Chat System
 ===
 Peer to Peer simple chat system
 
